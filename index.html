@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roman Tkachenko — Scientific Portfolio</title>
+  <style>
+    :root { --ink:#07111f; --paper:#edf3f7; --line:rgba(237,243,247,.18); --muted:#9fb2c2; --cyan:#7ce6ff; --gold:#ffcb72; --red:#ff7b89; }
+    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ink); color:var(--paper); font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; overflow-x:hidden; }
+    canvas { position:fixed; inset:0; z-index:-1; opacity:.88; }
+    nav { height:76px; display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:auto; padding:0 28px; border-bottom:1px solid var(--line); }
+    .mark { letter-spacing:.18em; font-size:.72rem; font-weight:700; } nav a { color:var(--muted); text-decoration:none; font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; margin-left:22px; }
+    nav a:hover { color:var(--cyan); }
+    main { max-width:1180px; margin:auto; padding:0 28px 80px; }
+    .hero { min-height:620px; display:grid; align-content:center; max-width:840px; }
+    .eyebrow { color:var(--cyan); font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { font-size:clamp(3.8rem,9vw,8rem); line-height:.88; letter-spacing:-.075em; margin:20px 0 28px; font-weight:650; }
+    h1 span { color:transparent; -webkit-text-stroke:1px var(--cyan); }
+    .lead { max-width:600px; color:var(--muted); font-size:1.12rem; line-height:1.7; }
+    .status { display:flex; gap:14px; align-items:center; margin-top:40px; font-family:ui-monospace,monospace; color:var(--muted); font-size:.75rem; }
+    .pulse { width:8px; height:8px; border-radius:50%; background:var(--cyan); box-shadow:0 0 18px var(--cyan); }
+    section { border-top:1px solid var(--line); padding:88px 0; }
+    .section-head { display:flex; justify-content:space-between; gap:24px; align-items:baseline; margin-bottom:42px; }
+    h2 { margin:0; font-size:clamp(1.7rem,3vw,2.7rem); letter-spacing:-.045em; } .index { color:var(--cyan); font: .75rem ui-monospace,monospace; }
+    .fields { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .field { background:rgba(7,17,31,.82); padding:30px; min-height:230px; position:relative; overflow:hidden; } .field:after { content:""; width:100px; height:100px; border:1px solid var(--cyan); border-radius:50%; position:absolute; right:-35px; bottom:-45px; opacity:.22; }
+    .field:nth-child(2):after { border-color:var(--gold); border-radius:0; transform:rotate(45deg); } .field:nth-child(3):after { border-color:var(--red); width:140px; height:1px; bottom:44px; right:-12px; }
+    .field-num { color:var(--muted); font: .68rem ui-monospace,monospace; } .field h3 { font-size:1.36rem; margin:58px 0 12px; letter-spacing:-.03em; } .field p { color:var(--muted); font-size:.92rem; line-height:1.55; margin:0; }
+    .research-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:56px; } .placeholder { border:1px dashed rgba(124,230,255,.38); min-height:330px; display:grid; place-items:center; color:var(--muted); font: .75rem ui-monospace,monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .timeline { border-left:1px solid var(--line); padding-left:26px; } .event { position:relative; padding:0 0 40px; } .event:before { content:""; position:absolute; width:8px; height:8px; border-radius:50%; background:var(--ink); border:1px solid var(--cyan); left:-31px; top:4px; } .event small { color:var(--cyan); font-family:ui-monospace,monospace; } .event h3 { margin:9px 0; font-size:1.05rem; } .event p { color:var(--muted); margin:0; line-height:1.55; font-size:.9rem; }
+    .project { display:grid; grid-template-columns:100px 1fr auto; gap:28px; padding:23px 0; border-top:1px solid var(--line); align-items:start; } .project:first-of-type { border-top:none; } .tag { color:var(--gold); font:.7rem ui-monospace,monospace; } .project h3 { margin:0 0 8px; font-size:1.2rem; } .project p { margin:0; color:var(--muted); font-size:.9rem; line-height:1.5; } .arrow { color:var(--cyan); font-size:1.4rem; }
+    footer { border-top:1px solid var(--line); padding:40px 0 10px; display:flex; justify-content:space-between; color:var(--muted); font-size:.78rem; }
+    @media (max-width:720px) { nav { padding:0 18px; } nav a { display:none; } main { padding:0 18px 50px; } .hero { min-height:560px; } .fields,.research-grid { grid-template-columns:1fr; } .project { grid-template-columns:70px 1fr; } .arrow { display:none; } footer { gap:20px; flex-direction:column; } }
+  </style>
+</head>
+<body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <nav><div class="mark">ROMAN TKACHENKO / SCIENTIFIC PORTFOLIO</div><div><a href="#research">Research</a><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+  <main>
+    <section class="hero"><div class="eyebrow">Astrophysics · High-Energy Physics · Nuclear Physics</div><h1>Roman<br><span>Tkachenko</span></h1><p class="lead">A scientific portfolio at the intersection of cosmic structure, fundamental interactions, and computational physics.</p><div class="status"><i class="pulse"></i> PORTFOLIO IN DEVELOPMENT — CONTENT TO BE ADDED</div></section>
+    <section id="research"><div class="section-head"><div><div class="index">01 / RESEARCH FIELDS</div><h2>Three scales.<br>One curiosity.</h2></div><div class="index">PLACEHOLDER CONTENT</div></div><div class="fields"><article class="field"><div class="field-num">FIELD / 01</div><h3>Astrophysics</h3><p>Cosmic dynamics, gravitation, compact objects, and the large-scale universe.</p></article><article class="field"><div class="field-num">FIELD / 02</div><h3>High-Energy Physics</h3><p>Fundamental particles, extreme regimes, and the structure of matter.</p></article><article class="field"><div class="field-num">FIELD / 03</div><h3>Nuclear Physics</h3><p>Nuclear interactions, reactions, and matter under exceptional conditions.</p></article></div></section>
+    <section id="work"><div class="section-head"><div><div class="index">02 / RESEARCH RECORD</div><h2>Work in progress,<br>made legible.</h2></div></div><div class="research-grid"><div class="placeholder">Future scientific portrait / visual placeholder</div><div class="timeline"><article class="event"><small>NOW</small><h3>Research profile</h3><p>Current affiliation, degree, and research focus will appear here.</p></article><article class="event"><small>SELECTED WORK</small><h3>Projects & simulations</h3><p>Computational studies, publications, datasets, and talks will be added here.</p></article><article class="event"><small>ACADEMIC PATH</small><h3>Education & experience</h3><p>A concise scientific timeline will replace this placeholder.</p></article></div></div></section>
+    <section><div class="section-head"><div><div class="index">03 / SELECTED PROJECTS</div><h2>From questions<br>to measurable models.</h2></div></div><article class="project"><div class="tag">[ 01 ]</div><div><h3>Scientific project title</h3><p>Placeholder for a research project, its method, result, and supporting visual material.</p></div><div class="arrow">↗</div></article><article class="project"><div class="tag">[ 02 ]</div><div><h3>Computational study title</h3><p>Placeholder for simulations, numerical methods, experimental analysis, or open research tools.</p></div><div class="arrow">↗</div></article><article class="project"><div class="tag">[ 03 ]</div><div><h3>Publication or collaboration title</h3><p>Placeholder for peer-reviewed work, a conference contribution, or interdisciplinary research.</p></div><div class="arrow">↗</div></article></section>
+    <footer id="contact"><span>ROMAN TKACHENKO</span><span>CONTACT DETAILS TO BE ADDED</span><span>© 2026</span></footer>
+  </main>
+  <script>
+    const c=document.getElementById('field'),x=c.getContext('2d'); let w,h,stars=[];
+    function resize(){w=c.width=innerWidth;h=c.height=innerHeight;stars=Array.from({length:Math.floor(w*h/9000)},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.2,v:Math.random()*.12+.03}));}
+    function draw(){x.clearRect(0,0,w,h); x.strokeStyle='rgba(124,230,255,.055)'; x.lineWidth=1; for(let i=0;i<w;i+=70){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke();} for(let i=0;i<h;i+=70){x.beginPath();x.moveTo(0,i);x.lineTo(w,i);x.stroke();} for(const s of stars){s.y+=s.v;if(s.y>h)s.y=0;x.fillStyle='rgba(210,240,255,.72)';x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fill();} requestAnimationFrame(draw)} resize();addEventListener('resize',resize);draw();
+  </script>
+</body>
+</html>
