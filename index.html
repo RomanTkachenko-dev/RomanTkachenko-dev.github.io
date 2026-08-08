@@ -7,23 +7,37 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     :root{--black:#000;--white:#f3f5f6;--quiet:#8d969d;--line:rgba(255,255,255,.14);--signal:#d9ecff}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--black);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden} canvas{position:fixed;inset:0;z-index:-1;width:100%;height:100%;background:#000}
-    nav{height:76px;max-width:1160px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)} .mark{font:600 .7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em}.navlinks{display:flex;gap:23px}.navlinks a{color:var(--quiet);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}.navlinks a:hover{color:var(--white)}
-    main{max-width:1160px;margin:auto;padding:0 28px 76px}.hero{min-height:650px;display:flex;align-items:center}.hero-copy{max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.placeholder{margin:0;color:var(--quiet);font-size:1.05rem;line-height:1.65;max-width:430px}.hero-note{margin-top:42px;color:#69737b;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--black)}
+    body{margin:0;background:var(--black);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;isolation:isolate}
+    #blackhole{position:fixed;inset:0;z-index:0;width:100vw;height:100vh;pointer-events:none;background:
+      radial-gradient(ellipse 36% 10% at 80% 36%,transparent 0 18%,rgba(214,130,69,.24) 23%,rgba(111,57,31,.11) 45%,transparent 72%),
+      radial-gradient(circle at 80% 36%,#000 0 4.6%,rgba(230,186,130,.22) 5%,rgba(76,107,128,.08) 7.2%,transparent 12%),
+      radial-gradient(ellipse at 80% 36%,rgba(30,52,68,.1),transparent 34%),#000}
+    body::before{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:
+      linear-gradient(90deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.84) 32%,rgba(0,0,0,.43) 54%,rgba(0,0,0,.12) 74%,rgba(0,0,0,.28) 100%),
+      linear-gradient(180deg,rgba(0,0,0,.18) 0%,transparent 38%,rgba(0,0,0,.2) 100%)}
+    nav,main{position:relative;z-index:2}
+    nav{height:76px;max-width:1160px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .mark{font:600 .7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em}.navlinks{display:flex;gap:23px}.navlinks a{color:var(--quiet);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}.navlinks a:hover{color:var(--white)}
+    .navlinks a:focus-visible,.links a:focus-visible{outline:1px solid var(--signal);outline-offset:5px}
+    main{max-width:1160px;margin:auto;padding:0 28px 76px}.hero{min-height:650px;display:flex;align-items:center}.hero-copy{max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.placeholder{margin:0;color:var(--quiet);font-size:1.05rem;line-height:1.65;max-width:430px}.hero-note{margin-top:42px;color:#768089;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
     section{border-top:1px solid var(--line);padding:88px 0}.section-top{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:42px}.section-top h2{margin:10px 0 0;font-size:clamp(1.8rem,3.4vw,3rem);letter-spacing:-.055em;font-weight:500}.kicker{color:var(--quiet)}.muted{color:var(--quiet);font-size:.72rem;letter-spacing:.1em}
+    .muted,.measure,.record p,.record .status,.links a span:last-child{text-shadow:0 1px 3px #000,0 0 16px rgba(0,0,0,.92)}
     .about{display:grid;grid-template-columns:1.35fr .65fr;gap:70px}.about p{font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.47;letter-spacing:-.025em;margin:0}.measure{border-left:1px solid var(--line);padding-left:24px;color:var(--quiet);line-height:1.65;font-size:.93rem}
-    .records{border-top:1px solid var(--line)}.record{display:grid;grid-template-columns:130px 1fr 100px;gap:28px;border-bottom:1px solid var(--line);padding:25px 0}.record .year{color:#b5c7d4;font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace}.record h3{margin:0 0 7px;font-size:1.16rem;font-weight:500}.record p{margin:0;color:var(--quiet);font-size:.94rem;line-height:1.5}.record .status{color:#727d85;font:.68rem ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right}
+    .records{border-top:1px solid var(--line)}.record{display:grid;grid-template-columns:130px 1fr 100px;gap:28px;border-bottom:1px solid var(--line);padding:25px 0}.record .year{color:#b5c7d4;font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace}.record h3{margin:0 0 7px;font-size:1.16rem;font-weight:500}.record p{margin:0;color:var(--quiet);font-size:.94rem;line-height:1.5}.record .status{color:#7d878f;font:.68rem ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right}
     .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}.contact-lead{margin:0;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.22;letter-spacing:-.045em}.links{border-top:1px solid var(--line)}.links a{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:17px 0;color:var(--white);text-decoration:none;font-size:1.02rem}.links a span:last-child{color:var(--quiet);font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace}.links a:hover{color:#b5c7d4}
-    footer{border-top:1px solid var(--line);padding:30px 0 4px;display:flex;justify-content:space-between;color:#646e75;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em}
+    footer{border-top:1px solid var(--line);padding:30px 0 4px;display:flex;justify-content:space-between;color:#778189;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em}
     .type-line{min-height:2.2em;margin:22px 0 18px;color:var(--white);font:clamp(2.8rem,6.4vw,6.8rem)/.96 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.07em}.cursor{display:inline-block;width:.32ch;height:.86em;margin-left:.12ch;vertical-align:-.08em;background:#d9ecff;animation:blink .85s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}
-    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
+    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}body::before{background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.36) 36%,rgba(0,0,0,.82) 64%,rgba(0,0,0,.92) 100%),linear-gradient(90deg,rgba(0,0,0,.86),rgba(0,0,0,.12) 74%,rgba(0,0,0,.25))}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}}
   </style>
 </head>
 <body>
-  <canvas id="space" aria-hidden="true"></canvas><canvas id="accretion" aria-hidden="true"></canvas>
+  <canvas id="blackhole" aria-hidden="true"></canvas>
   <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div></nav>
   <main>
-    <section class="hero"><div class="hero-copy"><div class="label">Personal website</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko."></span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">Materials in preparation</div></div></section>
+    <section class="hero"><div class="hero-copy"><div class="label">Personal website</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">Materials in preparation</div></div></section>
     <section id="about"><div class="section-top"><div><div class="kicker">01 / About</div><h2>A place for the work,<br>and the path behind it.</h2></div><div class="muted">INTRODUCTION PENDING</div></div><div class="about"><p>This section will contain a concise personal introduction and a description of current interests.</p><div class="measure">The website is intentionally kept focused: a record of education, work, selected material, and ways to get in touch.</div></div></section>
     <section id="education"><div class="section-top"><div><div class="kicker">02 / Education</div><h2>Academic path.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
     <section id="experience"><div class="section-top"><div><div class="kicker">03 / Work experience</div><h2>Research and practice.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — PRESENT</div><div><h3>Role or research position</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Role or project</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
@@ -32,12 +46,322 @@
     <footer><span>ROMAN TKACHENKO</span><span>© 2026</span></footer>
   </main>
   <script>
-    const c=document.getElementById('space'),g=c.getContext('2d');let w,h,t=0;
-    function resize(){w=c.width=innerWidth;h=c.height=innerHeight}addEventListener('resize',resize);resize();
-    function arc(cx,cy,r,a,b,colour,width=1){g.beginPath();g.arc(cx,cy,r,a,b);g.strokeStyle=colour;g.lineWidth=width;g.stroke()}
-    function draw(){t+=.003;g.clearRect(0,0,w,h);const cx=w*.81,cy=h*.34;for(let i=0;i<100;i++){const a=i*2.399,r=70+Math.sqrt(i)*16,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r*.46;g.fillStyle=`rgba(220,235,255,${.08+(i%5)*.025})`;g.fillRect(x,y,1,1)}for(let r=52;r<255;r+=27)arc(cx,cy,r,-.15,Math.PI*2-.15,`rgba(210,232,255,${.025+(r%3)*.012})`);for(let k=0;k<14;k++){const a=t+k*Math.PI*2/14;arc(cx,cy,118+k*2,a,a+1.2,'rgba(196,222,255,.075)')}g.save();g.translate(cx,cy);g.rotate(-.22);g.scale(1,.28);const halo=g.createRadialGradient(0,0,14,0,0,220);halo.addColorStop(0,'rgba(0,0,0,1)');halo.addColorStop(.12,'rgba(10,14,20,.98)');halo.addColorStop(.25,'rgba(185,210,235,.42)');halo.addColorStop(.38,'rgba(68,91,116,.17)');halo.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=halo;g.beginPath();g.arc(0,0,220,0,Math.PI*2);g.fill();g.restore();g.fillStyle='#000';g.beginPath();g.arc(cx,cy,39,0,Math.PI*2);g.fill();requestAnimationFrame(draw)}draw();
-    const typed=document.getElementById('typed'),phrase=typed.dataset.text;let n=0;function type(){typed.textContent=phrase.slice(0,n++);if(n<=phrase.length)window.setTimeout(type,58)}window.setTimeout(type,420);
-    const a=document.getElementById('accretion'),ag=a.getContext('2d');function disk(){a.width=innerWidth;a.height=innerHeight;const cx=a.width*.81,cy=a.height*.34;ag.clearRect(0,0,a.width,a.height);ag.save();ag.translate(cx,cy);ag.scale(1,.27);for(let j=0;j<230;j++){const q=j*.47+t*3,r=55+(j%47)*4;ag.fillStyle=`rgba(190,220,255,${.025+(j%9)*.018})`;ag.fillRect(Math.cos(q)*r,Math.sin(q)*r,2,2)}ag.restore();requestAnimationFrame(disk)}disk();
+    (() => {
+      const canvas = document.getElementById('blackhole');
+      const gl = canvas.getContext('webgl', {
+        alpha: false,
+        antialias: false,
+        depth: false,
+        stencil: false,
+        preserveDrawingBuffer: false,
+        powerPreference: 'high-performance'
+      });
+
+      if (!gl) return;
+
+      const highFloat = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT);
+      const precision = highFloat && highFloat.precision > 0 ? 'highp' : 'mediump';
+      const vertexSource = `
+        precision highp float;
+        attribute vec2 a_position;
+        void main() {
+          gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+      `;
+      const fragmentSource = `
+        precision ${precision} float;
+        uniform vec2 u_resolution;
+        uniform vec2 u_center;
+        uniform float u_size;
+        uniform float u_time;
+
+        #define PI 3.14159265359
+
+        mat2 rotate2d(float angle) {
+          float c = cos(angle);
+          float s = sin(angle);
+          return mat2(c, s, -s, c);
+        }
+
+        float hash21(vec2 p) {
+          p = fract(p * vec2(123.34, 456.21));
+          p += dot(p, p + 45.32);
+          return fract(p.x * p.y);
+        }
+
+        float valueNoise(vec2 p) {
+          vec2 i = floor(p);
+          vec2 f = fract(p);
+          vec2 u = f * f * (3.0 - 2.0 * f);
+          float a = hash21(i);
+          float b = hash21(i + vec2(1.0, 0.0));
+          float c = hash21(i + vec2(0.0, 1.0));
+          float d = hash21(i + vec2(1.0, 1.0));
+          return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+        }
+
+        float fbm3(vec2 p) {
+          float value = 0.0;
+          float amplitude = 0.5;
+          for (int i = 0; i < 3; i++) {
+            value += amplitude * valueNoise(p);
+            p = mat2(1.60, 1.20, -1.20, 1.60) * p + vec2(17.1, 9.2);
+            amplitude *= 0.5;
+          }
+          return value;
+        }
+
+        vec3 starLayer(vec2 p, float scale) {
+          vec2 grid = p * scale;
+          vec2 id = floor(grid);
+          vec2 cell = fract(grid) - 0.5;
+          float seed = hash21(id);
+          vec2 offset = vec2(hash21(id + vec2(19.17, 7.31)), hash21(id + vec2(71.73, 3.11))) - 0.5;
+          float distanceToStar = length(cell - offset * 0.72);
+          float gate = smoothstep(0.966, 0.9995, seed);
+          float radius = mix(0.018, 0.090, pow(seed, 28.0));
+          float core = (1.0 - smoothstep(radius, radius + 0.035, distanceToStar)) * gate;
+          float glow = gate * radius * radius / (distanceToStar * distanceToStar + 0.002) * 0.10;
+          float temperature = hash21(id + vec2(4.7, 37.1));
+          vec3 starColor = mix(vec3(0.43, 0.62, 1.00), vec3(1.00, 0.80, 0.57), temperature);
+          float twinkle = 0.82 + 0.18 * sin(u_time * (0.35 + 0.72 * temperature) + seed * 31.0);
+          return starColor * (core + glow) * twinkle;
+        }
+
+        vec3 starField(vec2 p) {
+          vec3 stars = starLayer(p, 72.0) + starLayer(p + vec2(7.4, -3.1), 126.0) * 0.60;
+          float dust = valueNoise(p * 2.15 + vec2(u_time * 0.0010, 0.0)) + valueNoise(p * 5.10 - vec2(0.0, u_time * 0.0015)) * 0.45;
+          dust = smoothstep(0.76, 1.25, dust) * 0.032;
+          return stars + vec3(0.12, 0.20, 0.34) * dust;
+        }
+
+        void main() {
+          vec2 uv = gl_FragCoord.xy / u_resolution;
+          float aspect = u_resolution.x / u_resolution.y;
+          vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
+          vec2 centerUV = vec2(u_center.x, 1.0 - u_center.y);
+          vec2 center = (centerUV - 0.5) * vec2(aspect, 1.0);
+          vec2 q = p - center;
+          float r = length(q);
+          float azimuth = atan(q.y, q.x + 0.000001);
+          float pixel = 1.0 / u_resolution.y;
+          float size = u_size;
+          float shadowRadius = 0.071 * size;
+          float shadowAA = max(1.5 * pixel, 0.0008 * size);
+          float shadow = 1.0 - smoothstep(shadowRadius - shadowAA, shadowRadius + shadowAA, r);
+
+          float lensInfluence = 1.0 - smoothstep(0.10 * size, 0.64 * size, r);
+          float deflection = 0.010 * size * size * lensInfluence / (r * r + 0.018 * size * size);
+          vec2 sourcePosition = center + q * (1.0 + deflection);
+          vec3 color = starField(sourcePosition);
+
+          float echo = 1.0 - smoothstep(0.010 * size, 0.040 * size, abs(r - 0.112 * size));
+          if (echo > 0.001) {
+            vec2 mirroredSource = center - q * (0.58 + 0.14 * sin(azimuth * 2.0));
+            color += starField(mirroredSource) * echo * 0.14;
+          }
+
+          vec2 diskQ = rotate2d(-0.18) * q;
+          const float inclination = 0.235;
+          vec2 diskPlane = vec2(diskQ.x, diskQ.y / inclination);
+          float diskRadius = length(diskPlane);
+          float diskAngle = atan(diskPlane.y, diskPlane.x + 0.000001);
+          float diskInner = 0.105 * size;
+          float diskOuter = 0.360 * size;
+          float diskBand = smoothstep(diskInner - 0.009 * size, diskInner + 0.006 * size, diskRadius) *
+            (1.0 - smoothstep(diskOuter - 0.055 * size, diskOuter, diskRadius));
+          vec3 backEmission = vec3(0.0);
+          vec3 frontEmission = vec3(0.0);
+
+          if (diskBand > 0.0005) {
+            float turbulence = fbm3(vec2(diskRadius * 38.0 - u_time * 0.055,
+              sin(diskAngle * 3.0) + 0.55 * cos(diskAngle * 5.0)) + vec2(11.0));
+            float spiral = 0.5 + 0.5 * sin(diskAngle * 8.0 - diskRadius * 82.0 +
+              u_time * 0.42 + (turbulence - 0.5) * 5.0);
+            float fineThreads = pow(0.5 + 0.5 * sin(diskAngle * 23.0 -
+              diskRadius * 145.0 - u_time * 0.24), 8.0);
+            float density = diskBand * ((0.25 + 0.75 * turbulence) *
+              (0.55 + 0.45 * spiral) + fineThreads * 0.22);
+            float radialPosition = clamp((diskRadius - diskInner) /
+              (diskOuter - diskInner), 0.0, 1.0);
+            vec3 outerColor = vec3(0.10, 0.018, 0.004);
+            vec3 middleColor = vec3(1.10, 0.24, 0.025);
+            vec3 innerColor = vec3(2.40, 1.20, 0.48);
+            vec3 diskColor = mix(outerColor, middleColor, pow(1.0 - radialPosition, 0.80));
+            diskColor = mix(diskColor, innerColor, pow(1.0 - radialPosition, 3.0));
+            float approaching = 0.5 + 0.5 * cos(diskAngle - 0.15);
+            diskColor *= mix(0.48, 1.55, pow(approaching, 1.25));
+            diskColor += vec3(0.12, 0.28, 0.70) * pow(approaching, 6.0) *
+              (1.0 - radialPosition) * 0.45;
+            vec3 emission = diskColor * density *
+              (0.38 + 1.55 * pow(1.0 - radialPosition, 1.60));
+            float frontMask = 1.0 - smoothstep(-0.010 * size, 0.015 * size, diskQ.y);
+            float backMask = 1.0 - frontMask;
+            backEmission = emission * backMask * 0.72;
+            frontEmission = emission * frontMask;
+          }
+
+          float gravityHalo = exp(-abs(r - (shadowRadius + 0.030 * size)) / (0.035 * size));
+          color += vec3(0.08, 0.17, 0.34) * gravityHalo * (1.0 - shadow) * 0.055;
+          color += backEmission * (1.0 - shadow);
+
+          float upperMask = smoothstep(-0.12, 0.38, q.y / (r + 0.0001));
+          float arcRadius = shadowRadius + 0.031 * size + 0.005 * size * cos(azimuth * 2.0);
+          float lensedArc = (1.0 - smoothstep(0.004 * size + pixel,
+            0.017 * size + 2.0 * pixel, abs(r - arcRadius))) * upperMask;
+          float arcTexture = 0.55 + 0.45 * sin(azimuth * 11.0 - u_time * 0.31);
+          color += vec3(1.30, 0.48, 0.10) * lensedArc *
+            (0.35 + 0.65 * arcTexture) * (1.0 - shadow);
+
+          color = mix(color, vec3(0.00002, 0.00003, 0.00005), shadow);
+          color += frontEmission * (1.0 - shadow);
+
+          float photonRadius = shadowRadius + 0.0075 * size;
+          float photonWidth = max(1.20 * pixel, 0.0012 * size);
+          float photonCore = 1.0 - smoothstep(photonWidth, photonWidth * 3.30,
+            abs(r - photonRadius));
+          float photonHalo = 1.0 - smoothstep(0.004 * size + pixel,
+            0.022 * size + 2.0 * pixel, abs(r - photonRadius));
+          float ringAnisotropy = 0.55 + 0.45 * pow(0.5 +
+            0.5 * cos(azimuth - 0.30), 3.0);
+          color += vec3(1.55, 0.88, 0.32) *
+            (photonCore * 2.20 + photonHalo * 0.18) * ringAnisotropy;
+          color += vec3(0.28, 0.55, 1.00) * photonCore *
+            pow(0.5 + 0.5 * cos(azimuth + PI), 6.0) * 0.65;
+
+          float leftReadability = mix(0.34, 1.0, smoothstep(0.10, 0.72, uv.x));
+          color *= leftReadability;
+          vec2 vignettePosition = (uv - 0.5) * vec2(0.75, 1.0);
+          float vignette = 1.0 - 0.34 * smoothstep(0.36, 0.78, length(vignettePosition));
+          color *= vignette;
+          color = 1.0 - exp(-color * 1.16);
+          color = pow(max(color, vec3(0.0)), vec3(0.4545));
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          const message = gl.getShaderInfoLog(shader);
+          gl.deleteShader(shader);
+          throw new Error(message || 'Shader compilation failed');
+        }
+        return shader;
+      }
+
+      let program;
+      try {
+        const vertexShader = compileShader(gl.VERTEX_SHADER, vertexSource);
+        const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentSource);
+        program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        gl.deleteShader(vertexShader);
+        gl.deleteShader(fragmentShader);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          throw new Error(gl.getProgramInfoLog(program) || 'Program link failed');
+        }
+      } catch (error) {
+        console.warn('Black-hole background unavailable:', error);
+        return;
+      }
+
+      gl.useProgram(program);
+      gl.disable(gl.DEPTH_TEST);
+      gl.disable(gl.BLEND);
+      const vertices = new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+      const positionLocation = gl.getAttribLocation(program, 'a_position');
+      gl.enableVertexAttribArray(positionLocation);
+      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+      const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+      const centerLocation = gl.getUniformLocation(program, 'u_center');
+      const sizeLocation = gl.getUniformLocation(program, 'u_size');
+      const timeLocation = gl.getUniformLocation(program, 'u_time');
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      let animationFrame = 0;
+      let running = false;
+
+      function render(milliseconds) {
+        const seconds = reducedMotion.matches ? 28 : (milliseconds * 0.001) % 2048;
+        gl.uniform1f(timeLocation, seconds);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+      }
+
+      function resize() {
+        const cssWidth = Math.max(1, innerWidth);
+        const cssHeight = Math.max(1, innerHeight);
+        const pixelBudget = cssWidth < 720 ? 650000 : 1800000;
+        let ratio = Math.min(devicePixelRatio || 1, 1.5);
+        ratio = Math.min(ratio, Math.sqrt(pixelBudget / (cssWidth * cssHeight)));
+        const width = Math.max(1, Math.floor(cssWidth * ratio));
+        const height = Math.max(1, Math.floor(cssHeight * ratio));
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width;
+          canvas.height = height;
+        }
+        gl.viewport(0, 0, width, height);
+        gl.uniform2f(resolutionLocation, width, height);
+        const narrow = cssWidth < 720;
+        gl.uniform2f(centerLocation, narrow ? 0.72 : 0.80, narrow ? 0.26 : 0.36);
+        gl.uniform1f(sizeLocation, narrow ? 0.78 : 1.15);
+        render(performance.now());
+      }
+
+      function frame(milliseconds) {
+        if (!running) return;
+        render(milliseconds);
+        animationFrame = requestAnimationFrame(frame);
+      }
+
+      function stop() {
+        running = false;
+        cancelAnimationFrame(animationFrame);
+      }
+
+      function start() {
+        stop();
+        render(performance.now());
+        if (!reducedMotion.matches && !document.hidden) {
+          running = true;
+          animationFrame = requestAnimationFrame(frame);
+        }
+      }
+
+      addEventListener('resize', resize, {passive:true});
+      document.addEventListener('visibilitychange', start);
+      if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', start);
+      else reducedMotion.addListener(start);
+      canvas.addEventListener('webglcontextlost', event => {
+        event.preventDefault();
+        stop();
+      });
+      canvas.addEventListener('webglcontextrestored', () => location.reload());
+      resize();
+      start();
+    })();
+
+    (() => {
+      const typed = document.getElementById('typed');
+      const phrase = typed.dataset.text;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        typed.textContent = phrase;
+        return;
+      }
+      typed.textContent = '';
+      let index = 0;
+      function type() {
+        typed.textContent = phrase.slice(0, index++);
+        if (index <= phrase.length) window.setTimeout(type, 58);
+      }
+      window.setTimeout(type, 420);
+    })();
   </script>
 </body>
 </html>
