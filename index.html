@@ -6,44 +6,98 @@
   <title>Roman Tkachenko</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
+    @font-face{font-family:"Space Mono";src:url("assets/space-mono-400.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:"Space Mono";src:url("assets/space-mono-700.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
     :root{--black:#000;--white:#f3f5f6;--quiet:#8d969d;--line:rgba(255,255,255,.14);--signal:#d9ecff}
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;font-family:"Space Mono","Courier New",Courier,monospace!important}
     html{scroll-behavior:smooth;background:var(--black)}
-    body{margin:0;background:var(--black);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+    body{margin:0;background:var(--black);color:var(--white);font-family:"Space Mono","Courier New",Courier,monospace;overflow-x:hidden}
     nav{height:76px;max-width:1160px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-    .mark{font:600 .7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em}.navlinks{display:flex;gap:23px}.navlinks a{color:var(--quiet);text-decoration:none;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}.navlinks a:hover{color:var(--white)}
+    .mark{font:600 .7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em}.navlinks{display:flex;gap:23px}.navlinks a{color:var(--quiet);text-decoration:none;font-size:.75rem;letter-spacing:.1em}.navlinks a:hover{color:var(--white)}
     .navlinks a:focus-visible,.links a:focus-visible,.hero-credit:focus-visible{outline:1px solid var(--signal);outline-offset:5px}
     main{max-width:1160px;margin:auto;padding:0 28px 76px}
     .hero{position:relative;min-height:650px;display:flex;align-items:center;overflow:hidden;isolation:isolate}
-    .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:#000}
-    .hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.86}
-    .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.93) 28%,rgba(0,0,0,.58) 52%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.28) 100%),linear-gradient(180deg,#000 0%,transparent 17%,transparent 77%,#000 100%)}
+    .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:#000 url("assets/black-hole-poster.webp") center/cover no-repeat}
+    .hero-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.86}
+    .ascii-frame{position:absolute;top:50%;right:1.5%;z-index:1;transform:translateY(-50%);overflow:hidden;border:1px solid rgba(217,236,255,.28);background:rgba(0,0,0,.68);box-shadow:0 18px 55px rgba(0,0,0,.55),inset 0 0 35px rgba(255,255,255,.025);backdrop-filter:blur(7px) brightness(.62);-webkit-backdrop-filter:blur(7px) brightness(.62)}
+    .ascii-label{height:28px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid rgba(217,236,255,.18);color:#89959c;background:rgba(255,255,255,.035);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}
+    .hero-ascii{margin:0;padding:17px 19px 19px;color:#c8d2d8;text-shadow:0 0 7px rgba(217,236,255,.16);font:500 clamp(3.9px,.49vw,5.7px)/.86 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
+    .hero-media::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.93) 28%,rgba(0,0,0,.58) 52%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.28) 100%),linear-gradient(180deg,#000 0%,transparent 17%,transparent 77%,#000 100%)}
     .hero-copy{position:relative;z-index:1;max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.placeholder{margin:0;color:var(--quiet);font-size:1.05rem;line-height:1.65;max-width:430px}.hero-note{margin-top:42px;color:#8c969e;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
     .hero-credit{position:absolute;right:0;bottom:20px;z-index:1;color:#7f898f;text-decoration:none;font:.62rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px #000}.hero-credit:hover{color:var(--white)}
     section{border-top:1px solid var(--line);padding:88px 0}.section-top{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:42px}.section-top h2{margin:10px 0 0;font-size:clamp(1.8rem,3.4vw,3rem);letter-spacing:-.055em;font-weight:500}.kicker{color:var(--quiet)}.muted{color:var(--quiet);font-size:.72rem;letter-spacing:.1em}
+    section:not(.hero){position:relative;border-top:0}section:not(.hero)::before{content:"// ==========================================================================================================================================================";position:absolute;top:-.45em;left:0;right:0;overflow:hidden;white-space:nowrap;color:#647078;font-size:.65rem;line-height:1;letter-spacing:.08em;text-shadow:0 0 8px rgba(217,236,255,.12)}
     .muted,.measure,.record p,.record .status,.links a span:last-child{text-shadow:0 1px 3px #000,0 0 16px rgba(0,0,0,.92)}
     .about{display:grid;grid-template-columns:1.35fr .65fr;gap:70px}.about p{font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.47;letter-spacing:-.025em;margin:0}.measure{border-left:1px solid var(--line);padding-left:24px;color:var(--quiet);line-height:1.65;font-size:.93rem}
     .records{border-top:1px solid var(--line)}.record{display:grid;grid-template-columns:130px 1fr 100px;gap:28px;border-bottom:1px solid var(--line);padding:25px 0}.record .year{color:#b5c7d4;font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace}.record h3{margin:0 0 7px;font-size:1.16rem;font-weight:500}.record p{margin:0;color:var(--quiet);font-size:.94rem;line-height:1.5}.record .status{color:#7d878f;font:.68rem ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right}
     .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}.contact-lead{margin:0;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.22;letter-spacing:-.045em}.links{border-top:1px solid var(--line)}.links a{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:17px 0;color:var(--white);text-decoration:none;font-size:1.02rem}.links a span:last-child{color:var(--quiet);font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace}.links a:hover{color:#b5c7d4}
     footer{border-top:1px solid var(--line);padding:30px 0 4px;display:flex;justify-content:space-between;color:#778189;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em}
     .type-line{min-height:2.2em;margin:22px 0 18px;color:var(--white);font:clamp(2.8rem,6.4vw,6.8rem)/.96 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.07em}.cursor{display:inline-block;width:.32ch;height:.86em;margin-left:.12ch;vertical-align:-.08em;background:#d9ecff;animation:blink .85s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}
-    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px;align-items:flex-end;padding-bottom:108px}.hero-media img{object-position:center top}.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 37%,rgba(0,0,0,.9) 73%,#000 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.08) 76%,rgba(0,0,0,.22))}.hero-credit{right:0;bottom:18px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}.hero-media img{display:none}}
+    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px;align-items:flex-end;padding-bottom:108px}.hero-media video{object-position:center top}.ascii-frame{top:31%;right:50%;transform:translate(50%,-50%)}.ascii-label{height:24px;font-size:.5rem}.hero-ascii{padding:12px 11px 14px;font-size:clamp(2.7px,.83vw,3.65px)}.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 37%,rgba(0,0,0,.9) 73%,#000 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.08) 76%,rgba(0,0,0,.22))}.hero-credit{right:0;bottom:18px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}.hero-media video{display:none}}
   </style>
 </head>
 <body>
-  <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">About</a><a href="#education">Education</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div></nav>
+  <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">/about</a><a href="#education">/education</a><a href="#experience">/experience</a><a href="#contact">/contact</a></div></nav>
   <main>
     <section class="hero">
-      <div class="hero-media" aria-hidden="true"><img src="assets/nasa-black-hole.gif" width="1041" height="585" alt="" fetchpriority="high" decoding="async"></div>
+      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">
+                                                 +=*+:
+                                        -  :  ==+*##*##%%%##+=
+                                   +##*###%###%%@%**#%%%###%%%#+=
+                                =#%%#%%%%%%@@%@%%@@@%%@%%@%@%%%%##*
+                               #*%#%%##*#%%@@@%@@@@@%#%###@%%@%%%%###
+                             ###%#%###%#%@@%@%@@@%%@@@@@@%%%%%%%#%#%##+
+                            *#%%##%%@@@@@@@@@@@@@@@@@@@@@%%%#%@%%#%#%%%#*
+                           -#%%##%%@@%@%@@@@@@%@@%@@@@@@@@@%@%%%%%#%%%@%%+-
+                          *%%###%@@@%%@@@@@%%%#**#%##*#%@@@@@%%@%%#%%%%%%@*
+                          %%#%%%@%@%@@@@%#**+==-+=*+===++*%@%%%%@%#%%@@%%%#=
+                         ##%@%%#%%%@%#*==------:---------=+*#%%%%@%%%%%@@%%%:
+                        =#%@%#%%%%@%*+=----:::::::::-------=*%%%@@@@%%%%%@%%#
+                        %@@%%#%%@%%#+==----:::::::::::-----==#%%%@@@@@%@%@@%%
+                       #%%@%%%%%%%%#+=-----::::::::::::-----=*%%%@%@@@@@@@%@%*
+                       +%@@%@%%%%%%#+=-----::::::::::::-----=+%%%@@@@@%@@@%%#-
+                       =%%%@%@@%@@@#*=---:::::::::::::::----==%%@%@@@@@@@%@%##
+                       +#%@%@@@%@@@%+=----:::::::::::::::-:--=%%@@@@@@@@%%%%%:
+                        %%%@@@@@%@@#+==------:::::::::-:---=**#@%@@@@%@@@%###
+                        *%#%%@@@%@@%%%%#%%%%#*---::--+#%%%%%#*++%%%@%%%%%%##
+                         ##%%@@%@#==-=---==++++=-:---=++++=========*#%%##%++
+                           #*%%*+==+#*#%%@%#**+=-::-=++*#=*%##%*+=====#%%+-=
+                           =+#%====++*++*+=**++=-::-===+*+*++==+===---=%*---
+                            -=#------==========-::----====------------=#*---
+                            -=#--------------=--:::-------------------=+#=-
+                             =#-----:::--------::::--=-----:::::::----=*=--
+                             -+=------::-------::::---=----:::::------=*--
+                              -+------:----------::------:::::::------++-
+                                -------::---===+====-==--:::::-:------+
+                                 ----------:--------------:---::------
+                                 -----------------------:------------:
+                                  -------------------:::-------------
+                                  --------=++**#******##*+=---------
+                                   =-----=-==========---------------
+                                    =======--=======--------------=:
+                                    -=======--------------------==-:
+                                    --+====----::::-----------=+---
+                                    ---=*+===--------------==+-----
+                                    -----=*+==========-==++=-------
+                                   --------==+*******++=------------
+                               ##------------===-------------------=--=%%-
+                          -#%%@@=-------------=------------------------%@@%@%*
+                      #@@@@@@@@@%-------------------------------------=@@@@@@@@%@%+
+                 #%%@%@@@@@@@@@@@+------------------------------------@@@@@@@@@@@@@@%%%%
+            *#@@%@@@@@@@@@@@@@@@@@+----------------------------------@@@@@@@@@@@@@@@@@@@%%%#=
+       +%%%%@@%@@@@@@@@@@@@@@@@@@@@%-------------------------------%@@@@@@@@@@@@@@@@@@@@@@@@@%%%%*
+    *%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@=--------------------------@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%
+  %%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*=------------------=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*=====*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</pre></div></div>
       <div class="hero-copy"><div class="label">Personal website</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">Materials in preparation</div></div>
       <a class="hero-credit" href="https://svs.gsfc.nasa.gov/13326" target="_blank" rel="noreferrer">NASA GSFC · J. Schnittman ↗</a>
     </section>
-    <section id="about"><div class="section-top"><div><div class="kicker">01 / About</div><h2>A place for the work,<br>and the path behind it.</h2></div><div class="muted">INTRODUCTION PENDING</div></div><div class="about"><p>This section will contain a concise personal introduction and a description of current interests.</p><div class="measure">The website is intentionally kept focused: a record of education, work, selected material, and ways to get in touch.</div></div></section>
-    <section id="education"><div class="section-top"><div><div class="kicker">02 / Education</div><h2>Academic path.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="experience"><div class="section-top"><div><div class="kicker">03 / Work experience</div><h2>Research and practice.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — PRESENT</div><div><h3>Role or research position</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Role or project</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="events"><div class="section-top"><div><div class="kicker">04 / Academic events</div><h2>Seminars, conferences<br>&amp; workshops.</h2></div><div class="muted">RECORD TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="contact"><div class="section-top"><div><div class="kicker">05 / Contact</div><h2>Find me online.</h2></div><div class="muted">LINKS TO BE ADDED</div></div><div class="contact-grid"><p class="contact-lead">Professional profiles and contact details will be collected here.</p><div class="links"><a href="#" aria-label="GitHub link to be added">GitHub <span>LINK PENDING ↗</span></a><a href="#" aria-label="Research profile link to be added">Research profile <span>LINK PENDING ↗</span></a><a href="#" aria-label="Telegram link to be added">Telegram <span>LINK PENDING ↗</span></a><a href="#" aria-label="X link to be added">X <span>LINK PENDING ↗</span></a></div></div></section>
+    <section id="about"><div class="section-top"><div><div class="kicker">// 01 ABOUT</div><h2>A place for the work,<br>and the path behind it.</h2></div><div class="muted">INTRODUCTION PENDING</div></div><div class="about"><p>This section will contain a concise personal introduction and a description of current interests.</p><div class="measure">The website is intentionally kept focused: a record of education, work, selected material, and ways to get in touch.</div></div></section>
+    <section id="education"><div class="section-top"><div><div class="kicker">// 02 EDUCATION</div><h2>Academic path.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
+    <section id="experience"><div class="section-top"><div><div class="kicker">// 03 WORK EXPERIENCE</div><h2>Research and practice.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — PRESENT</div><div><h3>Role or research position</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Role or project</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
+    <section id="events"><div class="section-top"><div><div class="kicker">// 04 ACADEMIC EVENTS</div><h2>Seminars, conferences<br>&amp; workshops.</h2></div><div class="muted">RECORD TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
+    <section id="contact"><div class="section-top"><div><div class="kicker">// 05 CONTACT</div><h2>Find me online.</h2></div><div class="muted">LINKS TO BE ADDED</div></div><div class="contact-grid"><p class="contact-lead">Professional profiles and contact details will be collected here.</p><div class="links"><a href="#" aria-label="GitHub link to be added"><span>[github]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="Research profile link to be added"><span>[research_profile]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="Telegram link to be added"><span>[telegram]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="X link to be added"><span>[x]</span><span>-&gt; link_pending</span></a></div></div></section>
     <footer><span>ROMAN TKACHENKO</span><span>© 2026</span></footer>
   </main>
   <script>
