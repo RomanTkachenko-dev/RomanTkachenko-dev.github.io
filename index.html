@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Roman Tkachenko — high-energy physics, astrophysics, N-body calculations, numerical simulations, and scientific computing.">
   <title>Roman Tkachenko</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
@@ -21,9 +22,9 @@
     .hero-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.86}
     .ascii-frame{position:absolute;top:49%;right:0;z-index:1;transform:translateY(-50%);overflow:hidden;border:1px solid rgba(217,236,255,.36);background:rgba(0,0,0,.76);box-shadow:0 24px 70px rgba(0,0,0,.68),0 0 0 1px rgba(0,0,0,.7),inset 0 0 46px rgba(217,236,255,.035);backdrop-filter:blur(9px) brightness(.54);-webkit-backdrop-filter:blur(9px) brightness(.54)}
     .ascii-label{height:31px;display:flex;align-items:center;padding:0 13px;border-bottom:1px solid rgba(217,236,255,.2);color:#9ba8af;background:rgba(255,255,255,.045);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.ascii-label::before{content:"●";margin-right:9px;color:#91d7ac;font-size:.52rem;text-shadow:0 0 8px rgba(145,215,172,.65)}
-    .hero-ascii{margin:0;padding:18px 20px 21px;color:#d8e1e6;text-shadow:0 0 8px rgba(217,236,255,.2);font:500 clamp(4.5px,.58vw,6.8px)/.9 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
+    .hero-ascii{margin:0;padding:18px 20px 21px;color:#d8e1e6;text-shadow:0 0 8px rgba(217,236,255,.2);font:500 clamp(4.8px,.63vw,7.4px)/.9 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
     .hero-media::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.93) 28%,rgba(0,0,0,.58) 52%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.28) 100%),linear-gradient(180deg,#000 0%,transparent 17%,transparent 77%,#000 100%)}
-    .hero-copy{position:relative;z-index:1;max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.placeholder{margin:0;color:var(--quiet);font-size:1.05rem;line-height:1.65;max-width:430px}.hero-note{margin-top:42px;color:#8c969e;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+    .hero-copy{position:relative;z-index:1;max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.hero-note{margin-top:42px;color:#8c969e;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
     .hero-credit{position:absolute;right:0;bottom:20px;z-index:1;color:#7f898f;text-decoration:none;font:.62rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px #000}.hero-credit:hover{color:var(--white)}
     section{border-top:1px solid var(--line);padding:88px 0}.section-top{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:42px}.section-top h2{margin:10px 0 0;font-size:clamp(1.8rem,3.4vw,3rem);letter-spacing:-.055em;font-weight:500}.kicker{color:var(--quiet)}.muted{color:var(--quiet);font-size:.72rem;letter-spacing:.1em}
     section:not(.hero){position:relative;border-top:0}section:not(.hero)::before{content:"// ==========================================================================================================================================================";position:absolute;top:-.45em;left:0;right:0;overflow:hidden;white-space:nowrap;color:#647078;font-size:.65rem;line-height:1;letter-spacing:.08em;text-shadow:0 0 8px rgba(217,236,255,.12)}
@@ -33,72 +34,55 @@
     .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}.contact-lead{margin:0;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.22;letter-spacing:-.045em}.links{border-top:1px solid var(--line)}.links a{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:17px 0;color:var(--white);text-decoration:none;font-size:1.02rem}.links a span:last-child{color:var(--quiet);font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace}.links a:hover{color:#b5c7d4}
     footer{border-top:1px solid var(--line);padding:30px 0 4px;display:flex;justify-content:space-between;color:#778189;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em}
     .type-line{min-height:2.2em;margin:22px 0 18px;color:var(--white);font:clamp(2.8rem,6.4vw,6.8rem)/.96 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.07em}.cursor{display:inline-block;width:.32ch;height:.86em;margin-left:.12ch;vertical-align:-.08em;background:#d9ecff;animation:blink .85s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}
-    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px;align-items:flex-end;padding-bottom:108px}.hero-media video{object-position:center top}.ascii-frame{top:31%;right:50%;transform:translate(50%,-50%)}.ascii-label{height:24px;font-size:.5rem}.hero-ascii{padding:12px 11px 14px;font-size:clamp(2.9px,.9vw,3.9px)}.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 37%,rgba(0,0,0,.9) 73%,#000 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.08) 76%,rgba(0,0,0,.22))}.hero-credit{right:0;bottom:18px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
+    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px;align-items:flex-end;padding-bottom:108px}.hero-media video{object-position:center top}.ascii-frame{top:31%;right:50%;transform:translate(50%,-50%)}.ascii-label{height:24px;font-size:.5rem}.hero-ascii{padding:12px 11px 14px;font-size:clamp(3.1px,.98vw,4.3px)}.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 37%,rgba(0,0,0,.9) 73%,#000 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.08) 76%,rgba(0,0,0,.22))}.hero-credit{right:0;bottom:18px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}.hero-media video{display:none}}
   </style>
 </head>
 <body>
-  <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">/about</a><a href="#education">/education</a><a href="#experience">/experience</a><a href="#contact">/contact</a></div></nav>
+  <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">/about</a><a href="#education">/education</a><a href="#experience">/research</a><a href="#events">/awards</a><a href="#contact">/contact</a></div></nav>
   <main>
     <section class="hero">
-      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">                                                   ;A555555
-                                                rA2r::    s5X3h32;AA:
-                                                A;::::,,     :rsiiA5335
-                                             XAX:       :is,  i;;iriirrXX
-                                          AXr:             ;r::::;;;;rsrs2
-                                         A:         ,;rrsrA3h5Xi      :;iX32
-                                        ;: ::    rAhHGGGGGS###SH3s:        :s
-                                                AhHSSS#S########SH3r        ,
-                                        r      rMGGGGSSSSSGSSSSSSSGMs        X
-                                        i:    :5HSSSS##SSSSSS##SSSSG3i       :
-                                              sMGSSSSSSSSSSS#######SHX  :    :
-                                        :     h5AAXssX2hMHHM335253hMH5       ;
-                                             AH2srr,  :shHhX;,  ;rsAhHi     :X
-                                           A 3GHh5Assss5S9S5srriX25hHGA :    ;
-                                           2i3SSSGHHMHHG99SGHMhhMHSSSGA X  ;
-                                            32HGGS#SGGS9999#GGSSSSSSGHXh5 :
-                                             ;MMHGHhhM33MHhhMhMGSGGHH3A3
-                                              Mhh33hHM2XsXX2MM33MHHMG;    25
-                                              3M33555355223hMh353MMG3   ::iA
-                                               hh35222AsXXXA22A5hMHH      :r:
-                                                533hh352AA25hh33hMh3      ;i5i
-                                                 25hHHHHHHHGGHM333hh  :   ,s5
-                                                 32AAAAAA2535AA53MHM: :;  ,i
-                                                 sM5As;:,::isA3hMHHH2      r
-                                                 Xhh32AsrsX23hMMHHGHhX:    MSMA
-                                            5r; iMhMh35AXXA53MMHHHGGHM3   ,S@@@@9G32;
-                                          3Hs   ;MHMMhh35253hMHHGGSSMA:    H&&&&&&B&@BSMA
-                                       sHB9; i:   r2hMMMhhhMMMMMh5X;       MB&&&&&B#9@@@@@BS3r
-                                   i3GB@&&5  :          ::::,        ;i;;r h9B&&&&&B#9BBBB&@@@&M
-                                2G9&@@&BBG  r:,::;ii:           :;::       59B&BB99#9999BBBBBB&@&h;
-                            ih9@@B9B&&B9#i i         ::;;;::,:      ,  ,,; X#SHMAhMS#9###9#99999B@@S
-                          :G@@&B###GS9BB5                                  2GHS9G#9#S9#SSSS##S#9BB&@h
-                         X&&B99#999SSMGSs i;;;;;::;:::    ::,,,,::::::::: ;9S#BB9S9#S##SSSS###9SMXr
-                       ;GB99####99#99#SS: ;;;:::::::::::::::::::::::::::: H9SS999######SSGSSAr;
-                      s&B###S#S####999BBs,i;;;;::::;;;::;;;::;;;;;:::::: :##SS999##9##SSSGGG
-                      B9#S#S#SSS#S#9#999s ;:::::::::::::::::::;;;;;;:::: i###99999####SSSGGG
-                     G9S#SSS#SS#SS#9##9G :;;;;;;;::::::::::::::::::;:::: i###9999####SSSGHGG
-                    3SHHHHGSSGS#SS####BX ;;;;;;;;:;;;::::::::::::::::::: :#9999999S##SSSGHGG
-                           G9SSSGS###9H :::;;;;;::::::::::,,::::::::::::  SB99##99#SSSSSHHGG
-                           :r;2GGS##S#s :::::::::::::::::: ,::::::::::::: X&B9###9SSSGGGMHSM
-                               3GGSS9M :::::::::::::::,,,,,, ,:,::::::::,  H&9####SGSGGHMHSh
-                               2SG#SSi ,  ,,:::::,,,,         ,::,::::, ,  :#9####SS#GHMMMSh
-                               XhM#9M                                  ,, : 3B####S3MHHMHGH;
-                                   X                                      : r#S#SSG   r3h2
-                                                                             SSSSSH
-                                                                             MSSSGM
-                                                                             hSSSG3
-                                       :                                 :   5#SSSh
-                                   r                                     :   h9GHHh
-                                   :  :               ,             :     :  ,</pre></div></div>
-      <div class="hero-copy"><div class="label">Personal website</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">Materials in preparation</div></div>
+      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">                                      -=========. -:
+                                   :=-:.       :--=++==++=.
+                                   -.....:::.     .::..----+=
+                               :=-:          .:.  ...:::::::::-
+                            :=:.               .-:..   ...::::-=:
+                           ::   ..     .:-----=+**=-:.      ..::==.
+                           :  .     :=+*############*+-:          :
+                                   -+**###############*+-.        .
+                           :      :+****################*-         -
+                           :      =*####################*+:       .
+                                 :+*#####################*=   .    .
+                           .     +=----::-=++**++======++++.     ...
+                                -*=-:::   .-+**=:.   ::--+*-      .-.
+                              - +***+=-:---=#%#+-::::-==+*#+. :    .
+                              =:+*###******##%##**++++*####+..- ..
+                               +=***####**##%%%##*#######**=-+  .
+                                .+*****+++++**++*++**#****+-+. .
+                                 +++++++*+------+*+++*****-    .==
+                                 -*++===++=====++*++=++**+   . .:-
+                                  +++====-------==-==+***:      .:
+                                   =+++++==---==+++=+++++  .   .::=.
+                                    -=+************++++++  .    .-=
+                                    :=-=======+++====++*+.  :   .-
+                                     +==-:.. ...:-=++****=       :
+                                     +++==-:::--=++++****+-     .*+=.
+                                :.. =++++==----==++*******++:   -#@@@%#+-:
+                             -++   .+**++++=====+++****##*+-  . :#%@@@@@%%@%*+-
+                          .+##: ..   -+++*+++++++*****++-:       #%@@@%%%%#@@@@@%*+-
+                      .=+%@@@=  :       .::::----:::.      ...:  *#%@@%%%%%#%%%%@@@@@#+
+                   =*#%@@@%%*  .    ...                 ..       *%%@@@@%%%%%%%%%%%%@@@
+               -*%@@%@@%%%%#. -::.     .::::......::....         +%##*++**##%##%%#%%%%%
+            .*%@@@%####%%%%-                                     =#**#+*####%######%###
+           +@@%%%##%%#**#%*   .....:...       ..     ........   .%*#%%%#%%#############</pre></div></div>
+      <div class="hero-copy"><div class="label">High Energy Physics · Astrophysics</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">N-body calculations / Simulations / Scientific computing</div></div>
       <a class="hero-credit" href="https://svs.gsfc.nasa.gov/13326" target="_blank" rel="noreferrer">NASA GSFC · J. Schnittman ↗</a>
     </section>
-    <section id="about"><div class="section-top"><div><div class="kicker">// 01 ABOUT</div><h2>A place for the work,<br>and the path behind it.</h2></div><div class="muted">INTRODUCTION PENDING</div></div><div class="about"><p>This section will contain a concise personal introduction and a description of current interests.</p><div class="measure">The website is intentionally kept focused: a record of education, work, selected material, and ways to get in touch.</div></div></section>
-    <section id="education"><div class="section-top"><div><div class="kicker">// 02 EDUCATION</div><h2>Academic path.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Degree or programme</h3><p>Institution, field of study, and a short contextual note.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="experience"><div class="section-top"><div><div class="kicker">// 03 WORK EXPERIENCE</div><h2>Research and practice.</h2></div><div class="muted">DETAILS TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR — PRESENT</div><div><h3>Role or research position</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR — YEAR</div><div><h3>Role or project</h3><p>Institution or collaboration, followed by a concise description of responsibilities.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="events"><div class="section-top"><div><div class="kicker">// 04 ACADEMIC EVENTS</div><h2>Seminars, conferences<br>&amp; workshops.</h2></div><div class="muted">RECORD TO BE ADDED</div></div><div class="records"><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article><article class="record"><div class="year">YEAR</div><div><h3>Event title</h3><p>Host institution, location, and a short note on participation.</p></div><div class="status">PLACEHOLDER</div></article></div></section>
-    <section id="contact"><div class="section-top"><div><div class="kicker">// 05 CONTACT</div><h2>Find me online.</h2></div><div class="muted">LINKS TO BE ADDED</div></div><div class="contact-grid"><p class="contact-lead">Professional profiles and contact details will be collected here.</p><div class="links"><a href="#" aria-label="GitHub link to be added"><span>[github]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="Research profile link to be added"><span>[research_profile]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="Telegram link to be added"><span>[telegram]</span><span>-&gt; link_pending</span></a><a href="#" aria-label="X link to be added"><span>[x]</span><span>-&gt; link_pending</span></a></div></div></section>
+    <section id="about"><div class="section-top"><div><div class="kicker">// 01 ABOUT</div><h2>High Energy Physics,<br>astrophysics, and simulations.</h2></div><div class="muted">PROFILE</div></div><div class="about"><p>I work across high-energy physics, astrophysics, and scientific computing. My experience includes the Phi-007 experiment and SIMC, N-body calculations and simulations of black-hole and galaxy dynamics, stellar photometry, and astronomical data analysis. I also conduct research in the Department of Physics of Stars and Galaxies at the Main Astronomical Observatory of the NAS of Ukraine.</p><div class="measure">languages = [<br>&nbsp;&nbsp;"Ukrainian: native",<br>&nbsp;&nbsp;"English: B2",<br>&nbsp;&nbsp;"German: A2"<br>]<br><br>tools = ["SIMC", "C shell", "ROOT", "PyROOT", "C", "C++", "C#", "Python"]</div></div></section>
+    <section id="education"><div class="section-top"><div><div class="kicker">// 02 EDUCATION</div><h2>Academic path.</h2></div><div class="muted">TWO PARALLEL MASTER'S PROGRAMMES</div></div><div class="records"><article class="record"><div class="year">2026 — PRESENT</div><div><h3>Master's programme in Physics and Astronomy</h3><p>National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute".</p></div><div class="status">IN PROGRESS</div></article><article class="record"><div class="year">2026 — PRESENT</div><div><h3>Master's programme in Systems and Methods of Artificial Intelligence</h3><p>National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute".</p></div><div class="status">IN PROGRESS</div></article><article class="record"><div class="year">2021 — 2025</div><div><h3>Bachelor's programme in Physics and Astronomy</h3><p>Department of General Physics and Modeling of Physical Processes, Faculty of Physics and Mathematics, National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute".</p></div><div class="status">CV RECORD</div></article></div></section>
+    <section id="experience"><div class="section-top"><div><div class="kicker">// 03 RESEARCH EXPERIENCE</div><h2>High Energy Physics,<br>astrophysics, and simulations.</h2></div><div class="muted">SELECTED WORK</div></div><div class="records"><article class="record"><div class="year">HIGH ENERGY PHYSICS</div><div><h3>Phi-007 (E12-25-007)</h3><p>Work on the Jefferson Lab Hall C experiment “Studying the Strangeness D-Term in Hall C via Exclusive Phi Electroproduction,” including SIMC simulations, input files, and C-shell workflows with Prof. Wenliang (Bill) Li and Henry Klest.</p></div><div class="status">SIMC / C SHELL</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Department of Physics of Stars and Galaxies</h3><p>Research at the Main Astronomical Observatory of the NAS of Ukraine, including N-body calculations and simulations of supermassive black-hole mergers, black-hole dynamics, and their influence on galaxy evolution.</p></div><div class="status">N-BODY</div></article><article class="record"><div class="year">HIGH ENERGY PHYSICS</div><div><h3>QCD SPIN Group</h3><p>Worked with ROOT, PyROOT, AI-based fitting functions, pfRICH detector simulation, and Cherenkov-ring analysis. Participated remotely in the Center for Frontiers in Nuclear Science at Stony Brook University under the guidance of Prof. Abhay Deshpande.</p></div><div class="status">ROOT / PYROOT</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Stellar Physics Research</h3><p>Photometry of comets and stars, observational data processing, and analysis for research publications, including local observations at the Astronomical Observatory of Kyiv Shevchenko National University.</p></div><div class="status">PHOTOMETRY</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Clear Skies Foundation Astrophysics Project</h3><p>Contributed to an online lecture course on binary eclipsing stars and analyzed raw TESS telescope data to identify and interpret stellar phenomena.</p></div><div class="status">TESS</div></article></div></section>
+    <section id="events"><div class="section-top"><div><div class="kicker">// 04 HONORS &amp; AWARDS</div><h2>Selected distinctions.</h2></div><div class="muted">2021 — 2024</div></div><div class="records"><article class="record"><div class="year">2021</div><div><h3>smaRTF Hackathon</h3><p>Third place in the all-Ukrainian engineering hackathon for a smart-city project.</p></div><div class="status">3RD PLACE</div></article><article class="record"><div class="year">2022</div><div><h3>NASA Space Apps Challenge</h3><p>Jury award for solving “The Carrington Problem”.</p></div><div class="status">JURY AWARD</div></article><article class="record"><div class="year">2022</div><div><h3>Wikipedia Contributions</h3><p>Award for writing astrophysics-related articles for Ukrainian Wikipedia.</p></div><div class="status">AWARD</div></article><article class="record"><div class="year">2023</div><div><h3>NASA Space Apps Challenge</h3><p>Ukrainian national winner for processing raw DSCOVR satellite data.</p></div><div class="status">NATIONAL WINNER</div></article><article class="record"><div class="year">2023</div><div><h3>Young Naturalists' Competition</h3><p>Participated as a juror in the molecular-physics section.</p></div><div class="status">JUROR</div></article><article class="record"><div class="year">2024</div><div><h3>Astro Battles Tournament</h3><p>Certificate of participation in Astro Battles Tournament 2024.</p></div><div class="status">CERTIFICATE</div></article></div></section>
+    <section id="contact"><div class="section-top"><div><div class="kicker">// 05 CONTACT</div><h2>Research and collaboration.</h2></div><div class="muted">CONTACT</div></div><div class="contact-grid"><p class="contact-lead">For research, scientific-computing, and collaboration inquiries.</p><div class="links"><a href="mailto:roman.tkachenko.vv@gmail.com"><span>[email]</span><span>-&gt; roman.tkachenko.vv@gmail.com</span></a><a href="https://github.com/RomanTkachenko-dev" target="_blank" rel="noreferrer"><span>[github]</span><span>-&gt; RomanTkachenko-dev</span></a></div></div></section>
     <footer><span>ROMAN TKACHENKO</span><span>© 2026</span></footer>
   </main>
   <script>
