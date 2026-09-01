@@ -19,9 +19,9 @@
     .hero{position:relative;min-height:650px;display:flex;align-items:center;overflow:hidden;isolation:isolate}
     .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:#000 url("assets/black-hole-poster.webp") center/cover no-repeat}
     .hero-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.86}
-    .ascii-frame{position:absolute;top:50%;right:1.5%;z-index:1;transform:translateY(-50%);overflow:hidden;border:1px solid rgba(217,236,255,.28);background:rgba(0,0,0,.68);box-shadow:0 18px 55px rgba(0,0,0,.55),inset 0 0 35px rgba(255,255,255,.025);backdrop-filter:blur(7px) brightness(.62);-webkit-backdrop-filter:blur(7px) brightness(.62)}
-    .ascii-label{height:28px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid rgba(217,236,255,.18);color:#89959c;background:rgba(255,255,255,.035);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}
-    .hero-ascii{margin:0;padding:17px 19px 19px;color:#c8d2d8;text-shadow:0 0 7px rgba(217,236,255,.16);font:500 clamp(4.2px,.53vw,6.2px)/.9 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
+    .ascii-frame{position:absolute;top:49%;right:0;z-index:1;transform:translateY(-50%);overflow:hidden;border:1px solid rgba(217,236,255,.36);background:rgba(0,0,0,.76);box-shadow:0 24px 70px rgba(0,0,0,.68),0 0 0 1px rgba(0,0,0,.7),inset 0 0 46px rgba(217,236,255,.035);backdrop-filter:blur(9px) brightness(.54);-webkit-backdrop-filter:blur(9px) brightness(.54)}
+    .ascii-label{height:31px;display:flex;align-items:center;padding:0 13px;border-bottom:1px solid rgba(217,236,255,.2);color:#9ba8af;background:rgba(255,255,255,.045);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.ascii-label::before{content:"●";margin-right:9px;color:#91d7ac;font-size:.52rem;text-shadow:0 0 8px rgba(145,215,172,.65)}
+    .hero-ascii{margin:0;padding:18px 20px 21px;color:#d8e1e6;text-shadow:0 0 8px rgba(217,236,255,.2);font:500 clamp(4.5px,.58vw,6.8px)/.9 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
     .hero-media::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.93) 28%,rgba(0,0,0,.58) 52%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.28) 100%),linear-gradient(180deg,#000 0%,transparent 17%,transparent 77%,#000 100%)}
     .hero-copy{position:relative;z-index:1;max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.placeholder{margin:0;color:var(--quiet);font-size:1.05rem;line-height:1.65;max-width:430px}.hero-note{margin-top:42px;color:#8c969e;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
     .hero-credit{position:absolute;right:0;bottom:20px;z-index:1;color:#7f898f;text-decoration:none;font:.62rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px #000}.hero-credit:hover{color:var(--white)}
@@ -41,44 +41,56 @@
   <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">/about</a><a href="#education">/education</a><a href="#experience">/experience</a><a href="#contact">/contact</a></div></nav>
   <main>
     <section class="hero">
-      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">                                           :==--.
-                                        -=-:.. .=-=++.-=.
-                                       =:   .     .:::--=+-
-                                   ---.         .....:::::-+-
-                                 .-       .::---=+=-:     .:==:
-                                 :      -+*######%%#*+-       :
-                                 .     =**############*=.      :
-                                 :    :*################=      :
-                                      +******###########*.     .
-                                     -+-::. .-+*+-:::--=*=    .-
-                                   :.+*+=-:::=##+-:::-=+*+     .
-                                   .-+####***#%%#*****###+:=
-                                     -**##****##****##***=+:
-                                      *++++*=----+*++***+   .=.
-                                      ++======-==++==+**:  ..-:
-                                       ++=+==---====++*+    .:-
-                                        =++***+****++++=     .+:
-                                        :==-----====++*+  .  .
-                                        .+==::.::-=+****=    :=:
-                                      . ++++==--=++******+.  -%@%#+-:
-                                  -+- . +***++==++***#**=:   :%@@@@%%@%*+-
-                              .=*%@: :    :----=====-:.   .: :#%@@%%%%@@@@@%*=
-                          :=*%@@@%= :. ..               .    .#%@%%%%%%%%%%@@@@*.
-                       -*%@%%%@%%*         .....   ...        *#*++*##%####%##%@@%-
-                     -%@@%#%#*##%:                    .... . :#*%%#%#########%%##*+
-                    *%%###%%#%##* .:........................ *%#%%#########*==:
-                  -%%########%%%%:.:....................... :%##%%%#%####*#=
-                 :%#########%%#%#.......................... -%##%%%######*#=
-                 ##############%= ...:..................... -%#%%%%#####**#=
-                      +###*###%* .......................... :%%%##%#####**#=
-                         =*####- ........................... +@%##%###****#:
-                          ####+ ............       .........  *%######**+*#:
-                          ++##:                         .. .. :%####++****+
-                             :                                 *####   :-:
-                                                               +###*
-                                                               =###*
-                             .  .                           .  -%##*
-                             :                              .. :+-::</pre></div></div>
+      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">                                                   ;A555555
+                                                rA2r::    s5X3h32;AA:
+                                                A;::::,,     :rsiiA5335
+                                             XAX:       :is,  i;;iriirrXX
+                                          AXr:             ;r::::;;;;rsrs2
+                                         A:         ,;rrsrA3h5Xi      :;iX32
+                                        ;: ::    rAhHGGGGGS###SH3s:        :s
+                                                AhHSSS#S########SH3r        ,
+                                        r      rMGGGGSSSSSGSSSSSSSGMs        X
+                                        i:    :5HSSSS##SSSSSS##SSSSG3i       :
+                                              sMGSSSSSSSSSSS#######SHX  :    :
+                                        :     h5AAXssX2hMHHM335253hMH5       ;
+                                             AH2srr,  :shHhX;,  ;rsAhHi     :X
+                                           A 3GHh5Assss5S9S5srriX25hHGA :    ;
+                                           2i3SSSGHHMHHG99SGHMhhMHSSSGA X  ;
+                                            32HGGS#SGGS9999#GGSSSSSSGHXh5 :
+                                             ;MMHGHhhM33MHhhMhMGSGGHH3A3
+                                              Mhh33hHM2XsXX2MM33MHHMG;    25
+                                              3M33555355223hMh353MMG3   ::iA
+                                               hh35222AsXXXA22A5hMHH      :r:
+                                                533hh352AA25hh33hMh3      ;i5i
+                                                 25hHHHHHHHGGHM333hh  :   ,s5
+                                                 32AAAAAA2535AA53MHM: :;  ,i
+                                                 sM5As;:,::isA3hMHHH2      r
+                                                 Xhh32AsrsX23hMMHHGHhX:    MSMA
+                                            5r; iMhMh35AXXA53MMHHHGGHM3   ,S@@@@9G32;
+                                          3Hs   ;MHMMhh35253hMHHGGSSMA:    H&&&&&&B&@BSMA
+                                       sHB9; i:   r2hMMMhhhMMMMMh5X;       MB&&&&&B#9@@@@@BS3r
+                                   i3GB@&&5  :          ::::,        ;i;;r h9B&&&&&B#9BBBB&@@@&M
+                                2G9&@@&BBG  r:,::;ii:           :;::       59B&BB99#9999BBBBBB&@&h;
+                            ih9@@B9B&&B9#i i         ::;;;::,:      ,  ,,; X#SHMAhMS#9###9#99999B@@S
+                          :G@@&B###GS9BB5                                  2GHS9G#9#S9#SSSS##S#9BB&@h
+                         X&&B99#999SSMGSs i;;;;;::;:::    ::,,,,::::::::: ;9S#BB9S9#S##SSSS###9SMXr
+                       ;GB99####99#99#SS: ;;;:::::::::::::::::::::::::::: H9SS999######SSGSSAr;
+                      s&B###S#S####999BBs,i;;;;::::;;;::;;;::;;;;;:::::: :##SS999##9##SSSGGG
+                      B9#S#S#SSS#S#9#999s ;:::::::::::::::::::;;;;;;:::: i###99999####SSSGGG
+                     G9S#SSS#SS#SS#9##9G :;;;;;;;::::::::::::::::::;:::: i###9999####SSSGHGG
+                    3SHHHHGSSGS#SS####BX ;;;;;;;;:;;;::::::::::::::::::: :#9999999S##SSSGHGG
+                           G9SSSGS###9H :::;;;;;::::::::::,,::::::::::::  SB99##99#SSSSSHHGG
+                           :r;2GGS##S#s :::::::::::::::::: ,::::::::::::: X&B9###9SSSGGGMHSM
+                               3GGSS9M :::::::::::::::,,,,,, ,:,::::::::,  H&9####SGSGGHMHSh
+                               2SG#SSi ,  ,,:::::,,,,         ,::,::::, ,  :#9####SS#GHMMMSh
+                               XhM#9M                                  ,, : 3B####S3MHHMHGH;
+                                   X                                      : r#S#SSG   r3h2
+                                                                             SSSSSH
+                                                                             MSSSGM
+                                                                             hSSSG3
+                                       :                                 :   5#SSSh
+                                   r                                     :   h9GHHh
+                                   :  :               ,             :     :  ,</pre></div></div>
       <div class="hero-copy"><div class="label">Personal website</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">Materials in preparation</div></div>
       <a class="hero-credit" href="https://svs.gsfc.nasa.gov/13326" target="_blank" rel="noreferrer">NASA GSFC · J. Schnittman ↗</a>
     </section>
