@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Roman Tkachenko — high-energy physics, astrophysics, N-body calculations, numerical simulations, and scientific computing.">
+  <title>Roman Tkachenko</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face{font-family:"Space Mono";src:url("assets/space-mono-400.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+    @font-face{font-family:"Space Mono";src:url("assets/space-mono-700.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
+    :root{--black:#000;--white:#f3f5f6;--quiet:#8d969d;--line:rgba(255,255,255,.14);--signal:#d9ecff}
+    *{box-sizing:border-box;font-family:"Space Mono","Courier New",Courier,monospace!important}
+    html{scroll-behavior:smooth;background:var(--black)}
+    body{margin:0;background:var(--black);color:var(--white);font-family:"Space Mono","Courier New",Courier,monospace;overflow-x:hidden}
+    nav{height:76px;max-width:1160px;margin:auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .mark{font:600 .7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.18em}.navlinks{display:flex;gap:23px}.navlinks a{color:var(--quiet);text-decoration:none;font-size:.75rem;letter-spacing:.1em}.navlinks a:hover{color:var(--white)}
+    .navlinks a:focus-visible,.links a:focus-visible,.hero-credit:focus-visible{outline:1px solid var(--signal);outline-offset:5px}
+    main{max-width:1160px;margin:auto;padding:0 28px 76px}
+    .hero{position:relative;min-height:650px;display:flex;align-items:center;overflow:hidden;isolation:isolate}
+    .hero-media{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;background:#000 url("assets/black-hole-poster.webp") center/cover no-repeat}
+    .hero-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.86}
+    .ascii-frame{position:absolute;top:49%;right:0;z-index:1;transform:translateY(-50%);overflow:hidden;border:1px solid rgba(217,236,255,.36);background:rgba(0,0,0,.76);box-shadow:0 24px 70px rgba(0,0,0,.68),0 0 0 1px rgba(0,0,0,.7),inset 0 0 46px rgba(217,236,255,.035);backdrop-filter:blur(9px) brightness(.54);-webkit-backdrop-filter:blur(9px) brightness(.54)}
+    .ascii-label{height:31px;display:flex;align-items:center;padding:0 13px;border-bottom:1px solid rgba(217,236,255,.2);color:#9ba8af;background:rgba(255,255,255,.045);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase}.ascii-label::before{content:"●";margin-right:9px;color:#91d7ac;font-size:.52rem;text-shadow:0 0 8px rgba(145,215,172,.65)}
+    .hero-ascii{margin:0;padding:18px 20px 21px;color:#d8e1e6;text-shadow:0 0 8px rgba(217,236,255,.2);font:500 clamp(4.8px,.63vw,7.4px)/.9 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:0;white-space:pre;user-select:none}
+    .hero-media::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.93) 28%,rgba(0,0,0,.58) 52%,rgba(0,0,0,.16) 76%,rgba(0,0,0,.28) 100%),linear-gradient(180deg,#000 0%,transparent 17%,transparent 77%,#000 100%)}
+    .hero-copy{position:relative;z-index:1;max-width:620px}.label,.kicker{font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}.label{color:#b5c7d4}.hero h1{margin:22px 0 18px;font-size:clamp(4rem,9vw,8rem);letter-spacing:-.078em;line-height:.85;font-weight:550}.hero h1 span{color:transparent;-webkit-text-stroke:1px rgba(243,245,246,.86)}.hero-note{margin-top:42px;color:#8c969e;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase}
+    .hero-credit{position:absolute;right:0;bottom:20px;z-index:1;color:#7f898f;text-decoration:none;font:.62rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px #000}.hero-credit:hover{color:var(--white)}
+    section{border-top:1px solid var(--line);padding:88px 0}.section-top{display:flex;justify-content:space-between;gap:30px;align-items:baseline;margin-bottom:42px}.section-top h2{margin:10px 0 0;font-size:clamp(1.8rem,3.4vw,3rem);letter-spacing:-.055em;font-weight:500}.kicker{color:var(--quiet)}.muted{color:var(--quiet);font-size:.72rem;letter-spacing:.1em}
+    section:not(.hero){position:relative;border-top:0}section:not(.hero)::before{content:"// ==========================================================================================================================================================";position:absolute;top:-.45em;left:0;right:0;overflow:hidden;white-space:nowrap;color:#647078;font-size:.65rem;line-height:1;letter-spacing:.08em;text-shadow:0 0 8px rgba(217,236,255,.12)}
+    .muted,.measure,.record p,.record .status,.links a span:last-child{text-shadow:0 1px 3px #000,0 0 16px rgba(0,0,0,.92)}
+    .about{display:grid;grid-template-columns:1.35fr .65fr;gap:70px}.about p{font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.47;letter-spacing:-.025em;margin:0}.measure{border-left:1px solid var(--line);padding-left:24px;color:var(--quiet);line-height:1.65;font-size:.93rem}
+    .records{border-top:1px solid var(--line)}.record{display:grid;grid-template-columns:130px 1fr 100px;gap:28px;border-bottom:1px solid var(--line);padding:25px 0}.record .year{color:#b5c7d4;font:.72rem ui-monospace,SFMono-Regular,Consolas,monospace}.record h3{margin:0 0 7px;font-size:1.16rem;font-weight:500}.record p{margin:0;color:var(--quiet);font-size:.94rem;line-height:1.5}.record .status{color:#7d878f;font:.68rem ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right}
+    .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}.contact-lead{margin:0;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.22;letter-spacing:-.045em}.links{border-top:1px solid var(--line)}.links a{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:17px 0;color:var(--white);text-decoration:none;font-size:1.02rem}.links a span:last-child{color:var(--quiet);font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace}.links a:hover{color:#b5c7d4}
+    footer{border-top:1px solid var(--line);padding:30px 0 4px;display:flex;justify-content:space-between;color:#778189;font:.7rem ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.07em}
+    .type-line{min-height:2.2em;margin:22px 0 18px;color:var(--white);font:clamp(2.8rem,6.4vw,6.8rem)/.96 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:-.07em}.cursor{display:inline-block;width:.32ch;height:.86em;margin-left:.12ch;vertical-align:-.08em;background:#d9ecff;animation:blink .85s steps(1,end) infinite}@keyframes blink{50%{opacity:0}}
+    @media(max-width:720px){nav{padding:0 18px}.navlinks{display:none}main{padding:0 18px 45px}.hero{min-height:565px;align-items:flex-end;padding-bottom:108px}.hero-media video{object-position:center top}.ascii-frame{top:31%;right:50%;transform:translate(50%,-50%)}.ascii-label{height:24px;font-size:.5rem}.hero-ascii{padding:12px 11px 14px;font-size:clamp(3.1px,.98vw,4.3px)}.hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 37%,rgba(0,0,0,.9) 73%,#000 100%),linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.08) 76%,rgba(0,0,0,.22))}.hero-credit{right:0;bottom:18px}.about,.contact-grid{grid-template-columns:1fr;gap:35px}.record{grid-template-columns:78px 1fr}.record .status{display:none}.section-top{margin-bottom:30px}footer{gap:14px;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cursor{animation:none}.hero-media video{display:none}}
+  </style>
+</head>
+<body>
+  <nav><div class="mark">ROMAN TKACHENKO</div><div class="navlinks"><a href="#about">/about</a><a href="#education">/education</a><a href="#experience">/research</a><a href="#events">/awards</a><a href="#contact">/contact</a></div></nav>
+  <main>
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="assets/black-hole-poster.webp" width="1040" height="584"><source src="assets/black-hole.mp4" type="video/mp4"><source src="assets/black-hole.webm" type="video/webm"></video><div class="ascii-frame"><div class="ascii-label">portrait.asc</div><pre class="hero-ascii">                                      -=========. -:
+                                   :=-:.       :--=++==++=.
+                                   -.....:::.     .::..----+=
+                               :=-:          .:.  ...:::::::::-
+                            :=:.               .-:..   ...::::-=:
+                           ::   ..     .:-----=+**=-:.      ..::==.
+                           :  .     :=+*############*+-:          :
+                                   -+**###############*+-.        .
+                           :      :+****################*-         -
+                           :      =*####################*+:       .
+                                 :+*#####################*=   .    .
+                           .     +=----::-=++**++======++++.     ...
+                                -*=-:::   .-+**=:.   ::--+*-      .-.
+                              - +***+=-:---=#%#+-::::-==+*#+. :    .
+                              =:+*###******##%##**++++*####+..- ..
+                               +=***####**##%%%##*#######**=-+  .
+                                .+*****+++++**++*++**#****+-+. .
+                                 +++++++*+------+*+++*****-    .==
+                                 -*++===++=====++*++=++**+   . .:-
+                                  +++====-------==-==+***:      .:
+                                   =+++++==---==+++=+++++  .   .::=.
+                                    -=+************++++++  .    .-=
+                                    :=-=======+++====++*+.  :   .-
+                                     +==-:.. ...:-=++****=       :
+                                     +++==-:::--=++++****+-     .*+=.
+                                :.. =++++==----==++*******++:   -#@@@%#+-:
+                             -++   .+**++++=====+++****##*+-  . :#%@@@@@%%@%*+-
+                          .+##: ..   -+++*+++++++*****++-:       #%@@@%%%%#@@@@@%*+-
+                      .=+%@@@=  :       .::::----:::.      ...:  *#%@@%%%%%#%%%%@@@@@#+
+                   =*#%@@@%%*  .    ...                 ..       *%%@@@@%%%%%%%%%%%%@@@
+               -*%@@%@@%%%%#. -::.     .::::......::....         +%##*++**##%##%%#%%%%%
+            .*%@@@%####%%%%-                                     =#**#+*####%######%###
+           +@@%%%##%%#**#%*   .....:...       ..     ........   .%*#%%%#%%#############</pre></div></div>
+      <div class="hero-copy"><div class="label">High Energy Physics · Astrophysics</div><p class="type-line"><span id="typed" data-text="Hello, I am Roman Tkachenko.">Hello, I am Roman Tkachenko.</span><i class="cursor" aria-hidden="true"></i></p><div class="hero-note">N-body calculations / Simulations / Scientific computing</div></div>
+      <a class="hero-credit" href="https://svs.gsfc.nasa.gov/13326" target="_blank" rel="noreferrer">NASA GSFC · J. Schnittman ↗</a>
+    </section>
+    <section id="about"><div class="section-top"><div><div class="kicker">// 01 ABOUT</div><h2>High Energy Physics,<br>astrophysics, and simulations.</h2></div><div class="muted">PROFILE</div></div><div class="about"><p>I work across high-energy physics, astrophysics, and scientific computing. My experience includes the Phi-007 experiment and SIMC, N-body calculations and simulations of black-hole and galaxy dynamics, stellar photometry, and astronomical data analysis. I also conduct research in the Department of Physics of Stars and Galaxies at the Main Astronomical Observatory of the NAS of Ukraine.</p><div class="measure">languages = [<br>&nbsp;&nbsp;"Ukrainian: native",<br>&nbsp;&nbsp;"English: B2",<br>&nbsp;&nbsp;"German: A2"<br>]<br><br>tools = ["SIMC", "C shell", "ROOT", "PyROOT", "C", "C++", "C#", "Python"]</div></div></section>
+    <section id="education"><div class="section-top"><div><div class="kicker">// 02 EDUCATION</div><h2>Academic path.</h2></div><div class="muted">PHYSICS &amp; ASTRONOMY</div></div><div class="records"><article class="record"><div class="year">2021 — 2025</div><div><h3>Bachelor's programme in Physics and Astronomy</h3><p>Department of General Physics and Modeling of Physical Processes, Faculty of Physics and Mathematics, National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute".</p></div><div class="status">CV RECORD</div></article></div></section>
+    <section id="experience"><div class="section-top"><div><div class="kicker">// 03 RESEARCH EXPERIENCE</div><h2>High Energy Physics,<br>astrophysics, and simulations.</h2></div><div class="muted">SELECTED WORK</div></div><div class="records"><article class="record"><div class="year">HIGH ENERGY PHYSICS</div><div><h3>Phi-007 (E12-25-007)</h3><p>Work on the Jefferson Lab Hall C experiment “Studying the Strangeness D-Term in Hall C via Exclusive Phi Electroproduction,” including SIMC simulations, input files, and C-shell workflows with Prof. Wenliang (Bill) Li and Henry Klest.</p></div><div class="status">SIMC / C SHELL</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Department of Physics of Stars and Galaxies</h3><p>Research at the Main Astronomical Observatory of the NAS of Ukraine, including N-body calculations and simulations of supermassive black-hole mergers, black-hole dynamics, and their influence on galaxy evolution.</p></div><div class="status">N-BODY</div></article><article class="record"><div class="year">HIGH ENERGY PHYSICS</div><div><h3>QCD SPIN Group</h3><p>Worked with ROOT, PyROOT, AI-based fitting functions, pfRICH detector simulation, and Cherenkov-ring analysis. Participated remotely in the Center for Frontiers in Nuclear Science at Stony Brook University under the guidance of Prof. Abhay Deshpande.</p></div><div class="status">ROOT / PYROOT</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Stellar Physics Research</h3><p>Photometry of comets and stars, observational data processing, and analysis for research publications, including local observations at the Astronomical Observatory of Kyiv Shevchenko National University.</p></div><div class="status">PHOTOMETRY</div></article><article class="record"><div class="year">ASTROPHYSICS</div><div><h3>Clear Skies Foundation Astrophysics Project</h3><p>Contributed to an online lecture course on binary eclipsing stars and analyzed raw TESS telescope data to identify and interpret stellar phenomena.</p></div><div class="status">TESS</div></article></div></section>
+    <section id="events"><div class="section-top"><div><div class="kicker">// 04 HONORS &amp; AWARDS</div><h2>Selected distinctions.</h2></div><div class="muted">2021 — 2024</div></div><div class="records"><article class="record"><div class="year">2021</div><div><h3>smaRTF Hackathon</h3><p>Third place in the all-Ukrainian engineering hackathon for a smart-city project.</p></div><div class="status">3RD PLACE</div></article><article class="record"><div class="year">2022</div><div><h3>NASA Space Apps Challenge</h3><p>Jury award for solving “The Carrington Problem”.</p></div><div class="status">JURY AWARD</div></article><article class="record"><div class="year">2022</div><div><h3>Wikipedia Contributions</h3><p>Award for writing astrophysics-related articles for Ukrainian Wikipedia.</p></div><div class="status">AWARD</div></article><article class="record"><div class="year">2023</div><div><h3>NASA Space Apps Challenge</h3><p>Ukrainian national winner for processing raw DSCOVR satellite data.</p></div><div class="status">NATIONAL WINNER</div></article><article class="record"><div class="year">2023</div><div><h3>Young Naturalists' Competition</h3><p>Participated as a juror in the molecular-physics section.</p></div><div class="status">JUROR</div></article><article class="record"><div class="year">2024</div><div><h3>Astro Battles Tournament</h3><p>Certificate of participation in Astro Battles Tournament 2024.</p></div><div class="status">CERTIFICATE</div></article></div></section>
+    <section id="contact"><div class="section-top"><div><div class="kicker">// 05 CONTACT</div><h2>Research and collaboration.</h2></div><div class="muted">CONTACT</div></div><div class="contact-grid"><p class="contact-lead">For research, scientific-computing, and collaboration inquiries.</p><div class="links"><a href="mailto:roman.tkachenko.vv@gmail.com"><span>[email]</span><span>-&gt; roman.tkachenko.vv@gmail.com</span></a><a href="https://github.com/RomanTkachenko-dev" target="_blank" rel="noreferrer"><span>[github]</span><span>-&gt; RomanTkachenko-dev</span></a></div></div></section>
+    <footer><span>ROMAN TKACHENKO</span><span>© 2026</span></footer>
+  </main>
+  <script>
+    (() => {
+      const typed = document.getElementById('typed');
+      const phrase = typed.dataset.text;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        typed.textContent = phrase;
+        return;
+      }
+      typed.textContent = '';
+      let index = 0;
+      function type() {
+        typed.textContent = phrase.slice(0, index++);
+        if (index <= phrase.length) window.setTimeout(type, 66);
+      }
+      window.setTimeout(type, 420);
+    })();
+  </script>
+</body>
+</html>
